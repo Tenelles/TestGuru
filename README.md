@@ -1,17 +1,10 @@
 # README
 
-Список сущностей для проекта TestGuru:
+Object model for TestGuru project:
 
-  * Студент
+  * TestCategory
+  > * Test
+  > > * Question
 
-  > * Ответ
-
-  * Категория
-
-  > * Тест
-
-  > > * Вопрос
-
-  > > > * Вариант ответа
-
-  * Проверяющий
+  * User
+  > * Answer
