@@ -1,3 +1,3 @@
-class Version
-  CURRENT_VERSION = '1.1.0'
+class TestGuru::Application
+  VERSION = '1.1.0'.freeze
 end
