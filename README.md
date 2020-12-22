@@ -2,9 +2,10 @@
 
 Object model for TestGuru project:
 
-  * TestCategory
+  * Category
   > * Test
   > > * Question
+  > > * Answer
 
   * User
-  > * Answer
+  > * Score
