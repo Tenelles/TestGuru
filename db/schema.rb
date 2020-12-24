@@ -10,39 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_223_180_954) do
-  create_table 'answers', force: :cascade do |t|
-    t.string 'title', null: false
-    t.boolean 'correct', default: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+ActiveRecord::Schema.define(version: 2020_12_23_173033) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string "title", null: false
+    t.boolean "correct", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'categories', force: :cascade do |t|
-    t.string 'title', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "categories", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'questions', force: :cascade do |t|
-    t.string 'title', null: false
-    t.integer 'score', default: 1
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "questions", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "score", default: 1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'tests', force: :cascade do |t|
-    t.string 'title', null: false
-    t.integer 'level', default: 0
-    t.integer 'category_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "tests", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "level", default: 1
+    t.integer "creator_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
+    t.integer "user_id"
+    t.index ["category_id"], name: "index_tests_on_category_id"
+    t.index ["user_id"], name: "creator_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name', null: false
-    t.integer 'score', default: 1
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
+
 end
