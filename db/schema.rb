@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20_201_228_153_325) do
     t.index ['test_id'], name: 'index_questions_on_test_id'
   end
 
+  create_table 'test_passings', force: :cascade do |t|
+    t.integer 'user_id', null: false
+    t.integer 'test_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['test_id'], name: 'index_test_passings_on_test_id'
+    t.index ['user_id'], name: 'index_test_passings_on_user_id'
+  end
+
   create_table 'tests', force: :cascade do |t|
     t.string 'title', null: false
     t.integer 'level', default: 1
