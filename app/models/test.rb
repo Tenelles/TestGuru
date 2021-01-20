@@ -1,7 +1,8 @@
 class Test < ApplicationRecord
   def self.find_by_category(category_name)
-    Test.joins('"tests" JOIN "categories" ON "tests"."category_id" = "categories"."id"').where(
-      '"categories"."title" = ?', category_name
-    ).order('"tests"."title"', :DESC).select('"tests"."title"')
+    res = []
+    joined_table = joins('tests JOIN categories ON tests.category_id = categories.id').where(
+      'categories.title = ?', category_name).find_each { |test| res.push(test.title) }
+    res.sort! { |a, b| b <=> a}
   end
 end
