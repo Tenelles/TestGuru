@@ -1,19 +1,12 @@
-unless (Category.first.nil? && User.first.nil? && Test.first.nil? && Question.first.nil? && Answer.first.nil? && TestPassing.first.nil?)
-  TestPassing.destroy_all
-  Answer.destroy_all
-  Question.destroy_all
-  Test.destroy_all
-  User.destroy_all
-  Category.destroy_all
-end
+return unless (Category.first.nil?)
 
-categories_list = Category.create!([
+categories_list = Category.create([
                                     { title: 'Programming' }, # 0
                                     { title: 'Digital art' }, # 1
                                     { title: 'Music' }        # 2
                                   ])
 
-users_list = User.create!([
+users_list = User.create([
                            { name: 'Robert Martin' },  # 0
                            { name: 'Kent D. Lee' },    # 1
                            { name: 'Tonge Gary' },     # 2
@@ -23,7 +16,7 @@ users_list = User.create!([
                            { name: 'Anna Korneva' } # 6
                          ])
 
-tests_list = Test.create!([
+tests_list = Test.create([
                            { title: 'Ruby', level: 1, user_id: users_list[0].id, category_id: categories_list[0].id },      # 0
                            { title: 'Ruby', level: 2, user_id: users_list[1].id, category_id: categories_list[0].id },      # 1
                            { title: 'Photoshop', level: 1, user_id: users_list[2].id, category_id: categories_list[1].id }, # 2
@@ -32,7 +25,7 @@ tests_list = Test.create!([
                            { title: 'Fruity Loops', user_id: users_list[4].id, category_id: categories_list[2].id }         # 5
                          ])
 
-questions_list = Question.create!([
+questions_list = Question.create([
                                    { title: 'What is the difference between puts and print?',
                                      category_id: categories_list[0].id, test_id: tests_list[0].id }, # 0
                                    { title: 'Which method allows you to convert a string to lowercase?',
@@ -65,7 +58,7 @@ questions_list = Question.create!([
                                      category_id: categories_list[2].id, test_id: tests_list[5].id }  # 14
                                  ])
 
-answers_list = Answer.create!([
+answers_list = Answer.create([
                                { title: 'Print - without skipping a line, puts - with a skip', correct: true, question_id: questions_list[0].id },
                                { title: 'Nothing, both do the same thing', question_id: questions_list[0].id },
                                { title: 'puts allows you to output variables, print - only text;', question_id: questions_list[0].id },
@@ -113,10 +106,10 @@ answers_list = Answer.create!([
                                { title: 'Quarter', question_id: questions_list[14].id }
                              ])
 
-test_passings_list = TestPassing.create!([
-                                          { user_id: users_list[5].id, test_id: tests_list[0].id },
-                                          { user_id: users_list[5].id, test_id: tests_list[1].id },
-                                          { user_id: users_list[5].id, test_id: tests_list[2].id },
-                                          { user_id: users_list[5].id, test_id: tests_list[3].id },
-                                          { user_id: users_list[6].id, test_id: tests_list[5].id }
-                                        ])
+TestPassing.create([
+                     { user_id: users_list[5].id, test_id: tests_list[0].id },
+                     { user_id: users_list[5].id, test_id: tests_list[1].id },
+                     { user_id: users_list[5].id, test_id: tests_list[2].id },
+                     { user_id: users_list[5].id, test_id: tests_list[3].id },
+                     { user_id: users_list[6].id, test_id: tests_list[5].id }
+                   ])
