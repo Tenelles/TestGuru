@@ -1,4 +1,4 @@
-return unless (Category.first.nil?)
+return if Category.exists?
 
 categories_list = Category.create([
                                     { title: 'Programming' }, # 0
@@ -107,7 +107,7 @@ answers_list = Answer.create([
                              ])
 
 TestPassing.create([
-                     { user_id: users_list[5].id, test_id: tests_list[0].id },
+                   { user_id: users_list[5].id, test_id: tests_list[0].id },
                      { user_id: users_list[5].id, test_id: tests_list[1].id },
                      { user_id: users_list[5].id, test_id: tests_list[2].id },
                      { user_id: users_list[5].id, test_id: tests_list[3].id },
