@@ -1,12 +1,16 @@
 class Test < ApplicationRecord
   belongs_to :category
-  has_many :questions
-  has_many :test_passings
+  belongs_to :author, class_name: "User",
+                      foreign_key: "user_id"
+
+  has_many :questions, dependent: :destroy
+  has_many :test_passings, dependent: :destroy
   has_many :users, through: :test_passings
 
-  def self.tests_titles_with_category(title)
-    joins('JOIN categories ON tests.category_id = categories.id')
-      .where(categories: {title: title})
+  def self.titles(category_title)
+    joins(:category)
+      .where(categories: { title: category_title })
+      .order(title: :desc)
       .pluck(:title)
   end
 end
