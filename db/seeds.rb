@@ -7,13 +7,13 @@ categories_list = Category.create([
                                   ])
 
 users_list = User.create([
-                           { email: 'Robert Martin' },  # 0
-                           { email: 'Kent D. Lee' },    # 1
-                           { email: 'Tonge Gary' },     # 2
-                           { email: 'Daniel Conway' },  # 3
-                           { email: 'Gareth Cocker' },  # 4
-                           { email: 'Kirill Sukharev' }, # 5
-                           { email: 'Anna Korneva' } # 6
+                           { email: 'r_martin@gmail.com' },  # 0
+                           { email: 'k_lee@yahoo.com' },    # 1
+                           { email: 'tongegary@gmail.com' },     # 2
+                           { email: 'dannyconway@draw.it' },  # 3
+                           { email: 'amagcocker@microsoft.com' },  # 4
+                           { email: 'kirilmorozov.k@yandex.ru' }, # 5
+                           { email: 'w-a-d@mail.ru' } # 6
                          ])
 
 tests_list = Test.create([
