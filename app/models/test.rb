@@ -7,6 +7,10 @@ class Test < ApplicationRecord
   has_many :test_passings, dependent: :destroy
   has_many :users, through: :test_passings
 
+  validates :title, presence: true
+  validates :level, numericality: { only_integer: true }
+  validates :title, uniqueness: { scope: :level }
+
   scope :with_difficulty, -> (difficulty_level) {
     case difficulty_level
     when :easy
