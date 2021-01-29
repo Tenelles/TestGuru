@@ -11,9 +11,9 @@ class Test < ApplicationRecord
   validates :level, numericality: { only_integer: true }
   validates :title, uniqueness: { scope: :level }
 
-  scope :easy, { where(level: 0..1) }
-  scope :medium, { where(level: 2..4) }
-  scope :hard, { where(level: 5..Float::INFINITY) }
+  scope :easy, -> { where(level: 0..1) }
+  scope :medium, -> { where(level: 2..4) }
+  scope :hard, -> { where(level: 5..Float::INFINITY) }
 
   def self.titles(category_title)
     joins(:category)
