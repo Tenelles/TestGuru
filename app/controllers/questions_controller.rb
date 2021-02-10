@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
 
   before_action :find_test, only: %i[index]
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
   def index
     render json: { questions: @test.questions.pluck(:id, :body) }
@@ -27,17 +28,20 @@ class QuestionsController < ApplicationController
   def destroy
     Question.find(params[:id]).destroy
 
-    render plain: 'Question was deleted'
+    render plain: 'Question was deleted.'
   end
 
   private
-
-  def question_params
-    params.require(:question).permit(:body);
-  end
 
   def find_test
     @test = Test.find(params[:id])
   end
 
+  def question_params
+    params.require(:question).permit(:body);
+  end
+
+  def rescue_with_record_not_found
+    render plain: 'Not found!'
+  end
 end
