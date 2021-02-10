@@ -1,7 +1,9 @@
 class QuestionsController < ApplicationController
 
+  before_action :find_test, only: %i[index]
+
   def index
-    render json: { questions: Test.find(params[:id]).questions.pluck(:id, :body) }
+    render json: { questions: @test.questions.pluck(:id, :body) }
   end
 
   def show
@@ -32,6 +34,10 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:body);
+  end
+
+  def find_test
+    @test = Test.find(params[:id])
   end
 
 end
