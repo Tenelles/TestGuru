@@ -1,7 +1,0 @@
-<h1>Question: <%=Question.find(params[:id]).body%></h1>
-<h3>Delete it?</h3>
-<form action="/questions/<%= params[:id] %>/destroy" method="post">
-  <input value="<%= form_authenticity_token %>" name="authenticity_token" type="hidden">
-
-  <input type="submit" value="Delete">
-</form>

@@ -14,9 +14,6 @@ class QuestionsController < ApplicationController
   def new
   end
 
-  def delete
-  end
-
   def create
     question = Question.new(question_params)
     question.test_id = params[:id]
@@ -26,7 +23,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.find(params[:id]).destroy
+    Question.find(params[:id]).delete
 
     render plain: 'Question was deleted.'
   end
