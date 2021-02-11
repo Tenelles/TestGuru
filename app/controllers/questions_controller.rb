@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_action :find_test, only: %i[index]
+  before_action :find_test, only: %i[index create]
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
   def index
@@ -11,15 +11,13 @@ class QuestionsController < ApplicationController
     render json: { question: Question.find(params[:id]).inspect}
   end
 
-  def new
-  end
-
   def create
-    question = Question.new(question_params)
-    question.test_id = params[:id]
-    question.save
-
-    render json: { result: question.inspect}
+    @question = @test.questions.build(question_params)
+    if @question.save
+      redirect_to '/'
+    else
+      render "new"
+    end
   end
 
   def destroy
@@ -31,7 +29,7 @@ class QuestionsController < ApplicationController
   private
 
   def find_test
-    @test = Test.find(params[:id])
+    @test = Test.find(params[:test_id])
   end
 
   def question_params
