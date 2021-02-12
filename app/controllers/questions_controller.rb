@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
 
   before_action :find_test, only: %i[index create]
+  before_action :find_question, only: %i[show destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
   def index
@@ -8,7 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    render json: { question: Question.find(params[:id]).inspect}
+    render json: { question: @question.inspect}
   end
 
   def create
@@ -21,7 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.find(params[:id]).delete
+    @question.delete
 
     render plain: 'Question was deleted.'
   end
@@ -30,6 +31,10 @@ class QuestionsController < ApplicationController
 
   def find_test
     @test = Test.find(params[:test_id])
+  end
+
+  def find_question
+    @question = Question.find(params[:id])
   end
 
   def question_params
