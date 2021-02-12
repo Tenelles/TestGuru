@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.delete
 
-    render plain: 'Question was deleted.'
+    redirect_to test_questions_path(@question.test)
   end
 
   private
