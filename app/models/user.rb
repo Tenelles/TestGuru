@@ -5,7 +5,7 @@ class User < ApplicationRecord
                    foreign_key: "user_id",
                    dependent: :destroy
 
-  validates :name, presence: true
+  validates :email, presence: true
 
   def passed_tests(level)
     tests.where(level: level)
