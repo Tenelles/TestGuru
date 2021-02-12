@@ -3,5 +3,5 @@ class Category < ApplicationRecord
 
   has_many :tests, dependent: :destroy
 
-  validates :titile, presence: true
+  validates :title, presence: true
 end
