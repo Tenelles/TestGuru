@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
   def index
-    render json: { questions: @test.questions.pluck(:id, :body) }
+    @questions = @test.questions
   end
 
   def show
