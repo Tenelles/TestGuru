@@ -9,7 +9,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    render json: { question: @question.inspect}
   end
 
   def new
@@ -29,7 +28,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.delete
 
-    redirect_to test_questions_path(@question.test)
+    redirect_back(fallback_location: '/')
   end
 
   private

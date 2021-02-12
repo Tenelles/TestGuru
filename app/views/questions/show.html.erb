@@ -1,0 +1,9 @@
+<h3><%= @question.body %></h3>
+
+<% @question.answers.each do |answer| %>
+  <ul>
+    <li><%= answer.body %></li>
+  </ul>
+<% end %>
+
+<%= link_to 'Back', test_path(@question.test)%>
