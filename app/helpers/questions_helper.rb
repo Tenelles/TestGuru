@@ -1,9 +1,8 @@
 module QuestionsHelper
-  def question_header(question, form_type)
-    case form_type
-    when :create
+  def question_header(question)
+    if question.new_record?
       "Create new #{question.test.title} question"
-    when :edit
+    else
       "Edit #{question.test.title} question"
     end
   end
