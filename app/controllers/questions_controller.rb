@@ -4,9 +4,6 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: %i[show destroy update edit]
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
 
-  def index
-  end
-
   def show
   end
 
