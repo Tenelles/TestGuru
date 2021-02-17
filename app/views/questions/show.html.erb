@@ -1,0 +1,5 @@
+<h3><%= @question.body %></h3>
+
+<%= render @question.answers %>
+
+<%= link_to 'Back', test_path(@question.test)%>

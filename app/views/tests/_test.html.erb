@@ -1,0 +1,6 @@
+<tr>
+  <td><%= test.title %></td>
+  <td><%= test.level %></td>
+  <td><%= pluralize(test.questions.count, 'question', plural: 'questions') %></td>
+  <td><%= link_to 'Show', test_path(test) %></td>
+</tr>
